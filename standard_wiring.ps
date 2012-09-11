@@ -1,0 +1,414 @@
+%!PS-Adobe-3.0
+%%Title: GD145
+%%DocumentPaperSizes: a4
+%%Pages: 2
+%%CreationDate: 08/May/08
+%%LanguageLevel: 2
+%%BoundingBox: 0 0 612 792
+
+/mt {moveto} def
+/lt {lineto} def
+/lw {setlinewidth} def
+/d {dup} def
+/s {stroke} def
+/f {fill} def
+/gr {grestore} def
+/gs {gsave} def
+/grs {gr gs} def
+/t {translate} def
+/sc {scale} def
+/ff {findfont} def
+/ssf {scalefont setfont} def
+/x {exch} def
+/circ { % stack: radius
+/rad x def
+0 0 rad 0 360 arc} def
+/rgb {setrgbcolor} def
+
+/pgsa72 [(a) (b) (c) (d) (e) (f) (g) (h) (i) (j)
+(k) (l) (m) (n) (o) (p) (q) (r) (s) (t)
+(u) (v) (w) (x) (y) (z) (A) (B) (C) (D)
+(E) (F) (G) (H) (I) (J) (K) (L) (M) (N)
+(O) (P) (Q) (R) (S) (T) (U) (V) (W) (X)
+(Y) (Z) (1) (2) (3) (4) (5) (6) (7) (8)
+(9) (0) (.) (,) (#) (@) (;) (:) (-) (+)
+(=) (^)] def
+/ring1 [51 61 34 33 43 5 39 26 63 47 6
+45 69 2 22 31 1 23 18 41 10 68
+55 48 32 13 14 50 71 66 21 9 54
+37 52 42 24 30 8 67 3 36 38 57
+7 15 70 56 4 12 46 29 40 19 65
+64 44 0 35 20 59 28 60 49 58 17
+53 27 62 25 16 11] def
+/ring2 [19 30 36 1 10 8 53 69 51 56 33
+61 50 45 60 57 25 15 21 13 66 6
+32 63 29 40 7 26 43 46 70 17 2
+59 3 39 71 28 49 65 41 68 35 16
+38 44 42 23 52 11 47 18 64 31 5
+37 9 0 34 62 12 54 4 55 27 67
+48 58 14 20 24 22] def
+/ring3 [ 4 20 46 37 49 0 50 18 1 70 58
+28 53 62 33 65 15 35 19 16 66 22
+13 26 24 52 21 61 48 39 59 68 3
+9 41 44 25 57 12 47 54 32 71 11
+45 23 55 27 51 43 56 60 40 17 31
+42 67 69 7 6 64 63 36 29 14 8
+34 2 10 38 30 5] def
+
+/colours [
+% Using the standard Tango colours
+  {0.678 0.498 0.659 rgb}
+  {0.3 0.65 0.8 rgb}
+  {0.769 0.627 0.000 rgb}
+% {0.808 0.361 0.000 rgb}
+ {0.561 0.349 0.008 rgb}
+ {0.306 0.604 0.023 rgb}
+ {0.125 0.200 0.529 rgb}
+% {0.361 0.208 0.400 rgb}
+ {0.643 0.000 0.000 rgb}
+% And black
+{0 0 0 rgb}] def
+/colourcount colours length def
+
+/slotcolours [
+% Light Tango colours
+{0.988 0.914 0.310}
+%{0.988 0.686 0.243}
+{0.914 0.725 0.431}
+{0.541 0.886 0.204}
+{0.447 0.624 0.812}
+{0.678 0.498 0.659}
+{0.937 0.161 0.161}] def
+/darkslotcolours [
+{0.769 0.627 0.000}
+%{0.808 0.361 0.000}
+{0.561 0.349 0.008}
+{0.306 0.604 0.023}
+{0.125 0.290 0.529}
+{0.361 0.208 0.400}
+{0.643 0.000 0.000}
+] def
+/slotcolourcount slotcolours length def
+/slotspercolour pgsa72 length slotcolourcount idiv def
+
+/crosshairs {
+% Draw cross-hair in middle of disc
+newpath
+0 4 mt 0 -4 lt s
+4 0 mt -4 0 lt s } def
+
+/ltr {
+-3 0 mt
+d 
+d 25 gt
+{ d 51 gt { /Courier ff 9 ssf } {/Courier-Bold ff 9 ssf} ifelse }
+{ /Courier ff 9 ssf }
+ifelse
+
+% Print letter
+d pgsa72 x get show
+} def
+
+/marker { % stack: symnum radius
+0 x t
+0.7 0.7 sc ltr
+} def
+
+/smallmarker { % stack: symnum radius
+0 x t
+0.6 0.6 sc ltr
+} def
+
+/negticks {
+/ticky x def
+0 1 71 {
+gs
+d 2 mod 0.35 mul 1 exch sub d d rgb
+spin
+newpath
+0 ticky 2 add mt
+0 ticky 2 sub lt s
+gr } for
+% Mark index point
+gs
+1 setgray
+0 spin
+2 lw
+newpath
+0 ticky 2 add mt
+0 ticky 2 sub lt s
+gr
+} def
+
+/ticks {
+/ticky x def
+0 1 71 {
+gs
+d 2 mod 0.65 mul d d rgb
+spin
+newpath
+0 ticky 2 add mt
+0 ticky 2 sub lt s
+gr } for
+% Mark index point
+gs
+0 spin
+2 lw
+newpath
+0 ticky 2 add mt
+0 ticky 2 sub lt s
+gr
+} def
+
+/indexof { % stack: array value
+/value exch def
+/thearray exch def
+/theindex 0 def
+/len thearray length 1 sub def
+0 1 len {
+  d 
+  thearray exch get
+  value eq {/theindex exch def} if
+} for
+theindex
+} def
+
+/Courier ff 8 ssf
+
+% Convert 0-71st position to angle in degrees and
+% rotate coordinate position to there
+/tickdeg -360 pgsa72 length div def
+/spin {tickdeg mul rotate} def
+
+/spinxy { % stack: spin radius
+/radius x def
+tickdeg mul /degrees x def
+degrees cos radius mul % x-position
+degrees sin radius mul % y-position
+} def
+
+/colourslot { % stack: spin colournumber darkP r1 r2
+  gs
+  /r2 exch def
+  /r1 exch def
+  % Pick colourset to use
+  0 eq {slotcolours} {darkslotcolours} ifelse exec
+  exch get exec
+  rgb
+  /ss exch def
+  newpath
+  ss 0.5 sub r1 spinxy moveto
+  ss 0.5 sub r2 spinxy lineto
+  ss 0.5 add r2 spinxy lineto
+  ss 0.5 add r1 spinxy lineto
+  closepath fill
+  gr
+} def
+
+/minof { % x y x y
+gt {exch} if pop
+} def
+
+/drawreflector {
+gs
+crosshairs
+
+% Draw Reflector
+0 2 71 {
+d
+1 add
+ring1 x get x
+ring1 x get
+/d1 x def
+/d2 x def
+
+% start drawing line from one end to the other
+0.7 lw
+newpath
+colours d1 d2 d1 d2 minof colourcount mod get exec
+d1 42 spinxy mt
+% get distance in indent
+d1 30 spinxy
+d2 30 spinxy
+d2 42 spinxy curveto
+s
+
+} for
+
+grs
+
+% Bug compatability with earlier revision
+-13 spin
+ 
+% Draw The Inner Circ with 36 reflector lines
+42 circ s
+42 ticks
+
+gr
+} def
+
+/drawinnerrotor {
+gs
+
+% Draw The 2nd Circ with 72 connections and mark points
+0 setgray
+57 circ f
+1 setgray
+42 circ f
+grs
+crosshairs
+42 circ s
+57 circ s
+42 negticks 
+57 negticks
+grs
+
+% colour slots in outer ring
+/len ring2 length 1 sub def
+% XXX why do I need this spin?
+-18 spin
+0 1 len {
+ 
+d slotspercolour idiv 
+% Use light colours here
+0 50 55 colourslot
+
+} for
+grs
+
+% colour slots in inner ring with same colours as the
+% characters in the outer ring
+% XXX why do I need this spin?
+-18 spin
+0 1 71 {
+  d
+  ring2 exch get
+  slotspercolour idiv 
+  % Use light colours here
+  0 45 50 colourslot
+} for
+
+grs
+
+0 1 71 {
+grs
+
+d spin
+46 smallmarker
+
+grs
+d
+ring2 x get spin
+
+51 marker
+} for
+
+gr
+
+} def
+
+/drawmiddlerotor {
+
+gs
+crosshairs
+
+grs
+
+% colour slots in outer ring
+/len ring1 length 1 sub def
+% XXX why do I need this spin?
+-18 spin
+0 1 len {
+ 
+d slotspercolour idiv 
+0 63.5 70 colourslot
+
+} for
+grs
+
+% colour slots in inner ring with same colours as the
+% characters in the outer ring
+% XXX why do I need this spin?
+-18 spin
+0 1 71 {
+  d
+  ring3 exch get
+  slotspercolour idiv 
+  0 57 63.5 colourslot
+} for
+
+grs
+
+% Draw the 3rd Circ with 72 connections and mark points
+57 circ s
+70 circ s 
+57 ticks 70 ticks
+0 setgray
+0 1 71 {
+gs
+d spin
+59.5 marker
+grs
+d
+ring3 x get spin
+64.5 marker
+gr
+} for
+
+gr
+} def
+
+/drawalphabetring {
+% Draw the Outer Circ with 72 letters and mark point
+gs
+80 circ 0.8 setgray f
+70 circ 1 setgray f
+grs
+crosshairs
+70 circ s
+80 circ s
+0 1 71 {
+grs
+d d d
+spin
+0 74 mt
+pgsa72 x get
+show
+newpath
+-1.8 rotate
+0 eq {2 lw} {0.5 lw} ifelse
+0 70 mt
+0 73 lt
+s
+} for
+
+gr
+} def
+
+/enig {
+
+gs 222 -202 t drawreflector
+grs 60 -60 t drawinnerrotor
+grs 205 -70 t drawmiddlerotor
+grs 80 -205 t drawalphabetring
+gr
+
+} def
+
+%%Page: 1 1
+
+gs 20 770 t enig gr
+gs 305 770 t enig gr
+gs 20 450 t enig gr
+gs 305 450 t enig gr
+
+showpage
+
+%%Page: 2 2
+
+20 770 t
+2 2 sc
+enig
+showpage
+%%EndPaperSize: a4
+%%EOF
